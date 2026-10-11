@@ -121,3 +121,26 @@ body {
     }
 }
 
+/* กรอบชื่อเว็บไซต์ด้านบน */
+.site-header {
+    width: 100%;
+    min-height: 100px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin: 0 auto 25px;
+    background: #6c32b8;
+    color: white;
+    border-bottom: 3px solid #444;
+}
+
+.site-header h1 {
+    margin: 0;
+    font-size: clamp(22px, 4vw, 34px);
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+
