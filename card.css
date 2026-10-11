@@ -1,0 +1,159 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 30px 20px;
+    background: #eeeeee;
+    font-family: Arial, sans-serif;
+    color: #222222;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* การ์ดบนจอใหญ่: รูปซ้าย ข้อความขวา */
+.card {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 16px;
+    width: 100%;
+    padding: 12px;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 3px 12px #00000012;
+    cursor: pointer;
+    transition: width 0.25s ease,
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+.card img {
+    display: block;
+    flex: 0 0 220px;
+    width: 220px;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 10px;
+    filter: brightness(65%);
+    transition: filter 0.25s ease;
+}
+
+.card-info {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 8px;
+    overflow-wrap: anywhere;
+}
+
+.card-info h2 {
+    margin-top: 0;
+    font-size: 22px;
+}
+
+.card-info p {
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.card-info a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #1769aa;
+    font-weight: bold;
+}
+
+/* คลิกแล้วขยาย */
+.card.expanded {
+    width: 100%;
+    transform: scale(1.025);
+    box-shadow: 0 8px 28px #00000025;
+}
+
+.card.expanded img {
+    filter: brightness(100%);
+}
+
+/* หน้าจอแคบ: รูปบน ข้อความล่าง */
+@media (max-width: 600px) {
+    body {
+        padding: 20px 12px;
+    }
+
+    .card {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 360px;
+        gap: 8px;
+    }
+
+    .card img {
+        flex: none;
+        width: 220px;
+        height: 320px;
+        max-width: 100%;
+    }
+
+    .card-info {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .card-info h2 {
+        font-size: 22px;
+    }
+
+    .card-info p {
+        font-size: 16px;
+    }
+
+    .card.expanded {
+        width: 100%;
+        transform: none;
+    }
+
+    .card.expanded img {
+        width: 260px;
+        height: 378px;
+        max-width: 100%;
+    }
+}
+
+
+/* คลิกการ์ดแล้วขยายภาพให้ดูง่ายขึ้น */
+.card.expanded img {
+    width: 440px;
+    height: 640px;
+    flex: 0 0 440px;
+    filter: brightness(100%);
+}
+
+/* ขยายพื้นที่การ์ดให้รองรับภาพใหญ่ */
+.card.expanded {
+    width: min(100%, 760px);
+    position: relative;
+    z-index: 10;
+    background: white;
+}
+
+/* บนมือถือให้ภาพใหญ่ขึ้น แต่ไม่ล้นจอ */
+@media (max-width: 600px) {
+    .card.expanded img {
+        width: 100%;
+        max-width: 320px;
+        height: auto;
+        aspect-ratio: 11 / 16;
+        flex: none;
+    }
+}
